@@ -1,0 +1,46 @@
+00_01 Automating With GitHub Actions
+00_02 What You Should Know
+00_03 Working With YAML Files
+00_04 Your First Action
+00_05 Workflow and Action Attributes
+01_01 Create a Workflow
+01_02 Add Jobs and Steps to a Workflow
+01_03 Add Actions to a Workflow
+01_04 Run a Workflow
+01_05 Add Dependencies Between Actions
+01_06 Add Conditions to a Workflow
+01_07 Workflow and Action Limitations
+01_08 Challenge: Develop a Complex Workflow
+01_09 Solution: Develop a Complex Workflow
+02_01 Use an Action From the Marketplace
+02_02 Use an Action From a Repository
+02_03 Passing Arguments to an Action
+02_04 Using Environment Variables
+02_05 Using Secrets
+02_06 Using Artifacts
+02_07 Manage Pull Requests
+02_08 Challenge: Develop a Workflow That Creates an Artifact
+02_09 Solution: Develop a Workflow That Creates an Artifact
+03_01 Plan Your CI/CD Pipeline
+03_02 Linting and Unit Tests
+03_03 Building and Managing Artifacts
+03_04 Testing
+03_05 Deploying
+03_06 Add a Workflow Status Badge
+03_07 Challenge: Develop a CI/CD Pipeline for a Python Script
+03_08 Solution: Develop a CI/CD Pipeline for a Python Script
+04_01 Plan a Custom Action
+04_02 Your Custom Action Objective
+04_03 Dockerfile Review
+04_04 Add a Dockerfile
+04_05 Add an Entry-Point Script
+04_06 Use Runtime Environment Resources
+04_07 Test an Action Locally
+04_08 Complete the Entry-Point Script
+04_09 Add a Metadata File
+04_10 Add a README File
+04_11 Deploy a Custom Action
+04_12 Publish an Action to the Marketplace
+04_13 Challenge: Create a Custom Action
+04_14 Solution: Create a Custom Action
+05_01 Additional Resources for GitHub Actions
