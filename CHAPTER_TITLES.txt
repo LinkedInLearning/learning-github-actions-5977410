@@ -7,7 +7,7 @@
 01_02 Add Jobs and Steps to a Workflow
 01_03 Add Actions to a Workflow
 01_04 Run a Workflow
-01_05 Add Dependencies Between Actions
+01_05 Add Dependencies Between Jobs
 01_06 Add Conditions to a Workflow
 01_07 Workflow and Action Limitations
 01_08 Challenge: Develop a Complex Workflow

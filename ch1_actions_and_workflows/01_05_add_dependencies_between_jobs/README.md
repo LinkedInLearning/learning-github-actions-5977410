@@ -1,4 +1,4 @@
-# 01_05 Add Dependencies Between Actions
+# 01_05 Add Dependencies Between Jobs
 
 <!-- FooterStart -->
 ---

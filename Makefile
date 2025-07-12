@@ -12,7 +12,7 @@ hello:
 	@echo "\tall         - run all tasks (except clean)"
 
 #all: footer lint spellcheck
-all: clean footer spellcheck
+all: clean update-titles footer spellcheck
 	@echo "Done."
 
 lint:
