@@ -54,5 +54,5 @@ In this lesson, you will:
 
 <!-- FooterStart -->
 ---
-[← 01_04 Run a Workflow](../01_04_run_a_workflow/README.md) | [01_06 Add Conditions to a Workflow →](../01_06_add_conditions_to_a_workflow/README.md)
+[← 01_04 Run a Workflow](../01_04_run_a_workflow/README.md) | [01_06 Specify Branches for Workflow Events →](../01_06_specify_branches_for_workflow_events/README.md)
 <!-- FooterEnd -->

@@ -1,4 +1,4 @@
-# 01_06 Add Conditions to a Workflow
+# 01_06 Specify Branches for Workflow Events
 
 By default, GitHub Actions workflows triggered by events like `push` or `pull_request` will run in response to those events on any branch.
 
