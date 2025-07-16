@@ -83,7 +83,6 @@ We’ll be using GitHub’s integrated development tools via **GitHub.dev** to v
 
 Using the integrated development environment makes it easy to follow along with the course without needing to install anything on your local machine.
 
-
 <!-- FooterStart -->
 ---
 [← 00_01 Automating With GitHub Actions](../00_01_automating_with_github_actions/README.md) | [00_03 Working With YAML Files →](../00_03_working_with_yaml_files/README.md)
