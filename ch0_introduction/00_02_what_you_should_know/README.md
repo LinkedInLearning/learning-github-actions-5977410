@@ -78,9 +78,11 @@ Here's how to do that using GitHub's integrated interface:
 
 We’ll be using GitHub’s integrated development tools via **GitHub.dev** to view and modify files.
 
+> [!TIP]
+> To open a repository in GitHub.dev, press the **`.`** key while viewing the repo on GitHub.
+
 Using the integrated development environment makes it easy to follow along with the course without needing to install anything on your local machine.
 
-- To open a repository in GitHub.dev, press the **`.`** key while viewing the repo on GitHub.
 
 <!-- FooterStart -->
 ---
