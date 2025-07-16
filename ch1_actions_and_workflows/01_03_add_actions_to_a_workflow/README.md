@@ -65,7 +65,7 @@ jobs:
         run: "Get-ChildItem Env: | Sort-Object Name"
 ```
 
-In the next lesson, you'll run this workflow, and verify that each job completes successfully, and review the output for each step.
+In the next lesson, you'll run this workflow, verify that each job completes successfully, and review the output for each step.
 
 <!-- FooterStart -->
 ---
