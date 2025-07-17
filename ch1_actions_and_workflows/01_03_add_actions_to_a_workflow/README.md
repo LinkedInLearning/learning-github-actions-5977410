@@ -69,5 +69,5 @@ In the next lesson, you'll run this workflow, verify that each job completes suc
 
 <!-- FooterStart -->
 ---
-[← 01_02 Add Jobs and Steps to a Workflow](../01_02_add_jobs__steps_to_a_workflow/README.md) | [01_04 Run a Workflow →](../01_04_run_a_workflow/README.md)
+[← 01_02 Add Jobs and Steps to a Workflow](../01_02_add_jobs_steps_to_a_workflow/README.md) | [01_04 Run a Workflow →](../01_04_run_a_workflow/README.md)
 <!-- FooterEnd -->
