@@ -6,8 +6,15 @@ In this lesson, you'll complete your workflow by adding **actions** and **comman
 - **Commands** are shell commands run directly on the runner's operating system.
 
 > [!TIP]
-> `actions/checkout` might be one of the most commonly used actions. Its used to check out the code in your repository into the runner’s filesystem so other steps in the same job can work with it.
+> `**[actions/checkout](https://github.com/actions/checkout)**` might be one of the most commonly used actions. Its used to check out the code in your repository into the runner’s filesystem so other steps in the same job can work with it.
 > Because each job runs in an isolated environment, each job that needs the work with the repository code will have to run the `checkout` action.
+
+Other useful actions include actions that setup specific verisons for compilers and interpreters for programming languages, including:
+
+- **[actions/setup-go](https://github.com/actions/setup-go)**
+- **[actions/setup-python](https://github.com/actions/setup-python)**
+- **[actions/setup-node](https://github.com/actions/setup-node)**
+- **[actions/setup-java](https://github.com/actions/setup-java)**
 
 ## Overview
 
