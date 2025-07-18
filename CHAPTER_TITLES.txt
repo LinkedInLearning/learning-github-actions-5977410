@@ -10,8 +10,8 @@
 01_05 Add Dependencies Between Jobs
 01_06 Specify Branches for Workflow Events
 01_07 Workflow and Action Limits
-01_08 Challenge: Develop a Complex Workflow
-01_09 Solution: Develop a Complex Workflow
+01_08 Challenge: Develop a Multi-Job Workflow
+01_09 Solution: Develop a Multi-Job Workflow
 02_01 Use an Action From the Marketplace
 02_02 Use an Action From a Repository
 02_03 Passing Arguments to an Action
