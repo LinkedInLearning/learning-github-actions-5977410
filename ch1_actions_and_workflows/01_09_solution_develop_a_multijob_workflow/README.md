@@ -125,7 +125,7 @@ func main() {
    * `cross-compile` (runs on `ubuntu-latest` and depends on the first three)
 4. Use `runs-on` to configure the runner for each job.
 
-```json
+```yaml
 name: Multi-Job Workflow
 on: [push]
 
@@ -158,7 +158,7 @@ For each of the first three jobs:
 
 Ubuntu and macOS:
 
-```json
+```yaml
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -176,7 +176,7 @@ Ubuntu and macOS:
 
 Windows:
 
-```json
+```yaml
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -203,7 +203,7 @@ Windows:
    * **Set up Go environment:** `- uses: actions/setup-go@v5.5`
    * **Use a multi-line** `run` **command to build binaries for each platform**.
 
-```json
+```yaml
   cross-compile:
     runs-on: ubuntu-latest
     needs: [ubuntu, windows, macos]
@@ -229,7 +229,7 @@ Windows:
 
 Your complete workflow should be similar to the following:
 
-```json
+```yaml
 name: Multi-Job Workflow
 on: [push]
 
@@ -319,7 +319,7 @@ jobs:
    ![View the most recent workflow][image2]
 3. Review the logs for each job.
    ![Review the logs for each job - part 1][image3]
-   ![Review the logs for each job - part 1][image4]
+   ![Review the logs for each job - part 2][image4]
 
 [image1]: images/01_08_chlg_and_01_09_soln_1.png
 [image2]: images/01_08_chlg_and_01_09_soln_2.png
