@@ -2,5 +2,5 @@
 
 <!-- FooterStart -->
 ---
-[← 02_05 Using Secrets](../02_05_using_secrets/README.md) | [02_07 Manage Pull Requests →](../02_07_manage_pull_requests/README.md)
+[← 02_05 Using Secrets](../02_05_using_secrets/README.md) | [02_07 Use Actions with pull requests →](../02_07_use_actions_with_pull_requests/README.md)
 <!-- FooterEnd -->

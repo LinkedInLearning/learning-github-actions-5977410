@@ -18,7 +18,7 @@
 02_04 Using Environment Variables
 02_05 Using Secrets
 02_06 Using Artifacts
-02_07 Manage Pull Requests
+02_07 Use Actions with pull requests
 02_08 Challenge: Develop a Workflow That Creates an Artifact
 02_09 Solution: Develop a Workflow That Creates an Artifact
 03_01 Plan Your CI/CD Pipeline

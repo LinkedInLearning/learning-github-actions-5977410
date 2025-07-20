@@ -1,4 +1,4 @@
-# 02_07 Manage Pull Requests
+# 02_07 Use Actions with pull requests
 
 <!-- FooterStart -->
 ---
