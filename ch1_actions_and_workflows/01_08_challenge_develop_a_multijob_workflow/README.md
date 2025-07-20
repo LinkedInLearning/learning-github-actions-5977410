@@ -4,7 +4,7 @@ In this challenge, you’ll create a GitHub Actions workflow that compiles and r
 
 You’ll also add a final job that performs cross-compilation to build binaries for multiple platforms.
 
-### Overview
+## Overview
 
 You will complete the following steps in this challenge:
 
