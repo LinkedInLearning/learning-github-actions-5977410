@@ -14,10 +14,10 @@
 01_09 Solution: Develop a Multi-Job Workflow
 02_01 Use an Action From the Marketplace
 02_02 Use an Action From a Repository
-02_03 Passing Arguments to an Action
-02_04 Using Environment Variables
-02_05 Using Secrets
-02_06 Using Artifacts
+02_03 Pass Arguments to an Action
+02_04 Use Environment Variables
+02_05 Use Secrets
+02_06 Create and Use Artifacts
 02_07 Use Actions with pull requests
 02_08 Challenge: Develop a Workflow That Creates an Artifact
 02_09 Solution: Develop a Workflow That Creates an Artifact
