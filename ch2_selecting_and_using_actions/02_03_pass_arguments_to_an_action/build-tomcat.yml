@@ -1,0 +1,44 @@
+name: Build Tomcat
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out tomcat-users.xml
+      uses: actions/checkout@v2
+
+    - name: List project files and java version
+      run: |
+          ls -ltr
+          java -version
+
+    - name: Checkout the Tomcat repo
+      uses: actions/checkout@v4
+      with:
+        repository: apache/tomcat # Repository name with owner
+        ref: main                 # The branch, tag or SHA to checkout
+        path: ./tomcat            # Relative path under $GITHUB_WORKSPACE
+
+    - name: Setup Java
+      uses: actions/setup-java@v1
+      with:
+        java-version: 21   # The JDK version to make available on the path
+        java-package: jdk  # (jre, jdk, or jdk+fx) - defaults to jdk
+        architecture: x64  # (x64 or x86) - defaults to x64
+
+    - name: List project files and java version
+      run: |
+          ls -ltr
+          java -version
+
+    - name: Copy tomcat-users.xml into Tomcat configuration directory
+      run: cp -v tomcat-users.xml ./tomcat/conf/tomcat-users.xml
+
+    - name: Compile Tomcat
+      run: |
+        cd ./tomcat
+        ant
