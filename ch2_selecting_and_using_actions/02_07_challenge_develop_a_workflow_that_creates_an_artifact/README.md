@@ -1,4 +1,4 @@
-# 02_07 Use Actions with pull requests
+# 02_07 Challenge: Develop a Workflow That Creates an Artifact
 
 <!-- FooterStart -->
 ---

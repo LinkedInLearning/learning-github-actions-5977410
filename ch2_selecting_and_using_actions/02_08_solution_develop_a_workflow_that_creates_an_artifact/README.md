@@ -1,4 +1,4 @@
-# 02_09 Solution: Develop a Workflow That Creates an Artifact
+# 02_08 Solution: Develop a Workflow That Creates an Artifact
 
 <!-- FooterStart -->
 ---

@@ -71,7 +71,7 @@ overlay:
 	@find . -type f -name README.md | sort | sed 's/^\.\///' | sed 's/\// > /g' | sed 's/ > README.md//'
 
 clean:
-	find . -type f -name \*.pdf -exec rm -vf {} \;
+	find . -type f -name \*.pdf -not \( -path '*/github-actions-cheat-sheet.pdf' \) -exec rm -vf {} \;
 	find . -type f -name \*.bak -exec rm -vf {} \;
 	find . -type f -name \*.new -exec rm -vf {} \;
 	find . -type d -name .pytest_cache -exec trash {} \;
