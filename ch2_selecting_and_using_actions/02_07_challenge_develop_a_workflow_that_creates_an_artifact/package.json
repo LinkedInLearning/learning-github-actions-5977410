@@ -1,0 +1,14 @@
+{
+  "name": "random-number-generator",
+  "version": "1.0.0",
+  "bin": "random-number-generator.js",
+  "scripts": {
+    "build": "pkg random-number-generator.js --targets node*-macos-arm64,node*-linux-x64,node*-win-x64 --output random-number-generator"
+  },
+  "dependencies": {
+    "@stdlib/random-base-mt19937": "^0.2.1"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.0"
+  }
+}
