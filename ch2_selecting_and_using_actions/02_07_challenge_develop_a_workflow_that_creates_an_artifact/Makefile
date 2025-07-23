@@ -54,17 +54,14 @@ seed-run: install
 # Test the script with different seeds
 test: install
 	@echo "Testing with different seeds..."
-	@echo "=== Test 1: Default seed ==="
+	@echo "=== Test 1: Timestamp seed ==="
 	@bun $(SCRIPT_NAME)
 	@echo ""
-	@echo "=== Test 2: Seed 42 ==="
-	@bun $(SCRIPT_NAME) 42
-	@echo ""
-	@echo "=== Test 3: Seed 'hello' ==="
+	@echo "=== Test 2: Seed 'hello' ==="
 	@bun $(SCRIPT_NAME) hello
 	@echo ""
-	@echo "=== Test 4: Seed 999999 ==="
-	@bun $(SCRIPT_NAME) 999999
+	@echo "=== Test 3: Seed 1906 ==="
+	@bun $(SCRIPT_NAME) 1906
 
 # Clean build artifacts
 clean:
@@ -76,6 +73,6 @@ clean:
 nuke: clean
 	@echo "Cleaning all dependencies..."
 	rm -rf node_modules
-	rm -f package-lock.json
+	rm -f bun.lock package-lock.json
 
 .PHONY: all install build run seed-run test clean nuke
