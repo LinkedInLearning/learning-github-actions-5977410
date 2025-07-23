@@ -18,8 +18,8 @@
 02_04 Use Environment Variables
 02_05 Use Secrets
 02_06 Create and Use Artifacts
-02_07 Challenge: Develop a Workflow That Creates an Artifact
-02_08 Solution: Develop a Workflow That Creates an Artifact
+02_07 Challenge: Develop a Workflow That Creates Artifacts
+02_08 Solution: Develop a Workflow That Creates Artifacts
 03_01 Plan Your CI/CD Pipeline
 03_02 Linting and Unit Tests
 03_03 Building and Managing Artifacts

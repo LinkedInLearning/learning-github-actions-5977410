@@ -1,0 +1,6 @@
+*.bun-build
+bun.lock
+report.txt
+node_modules
+package-lock.json
+random-number-generator-*

@@ -72,7 +72,8 @@ clean:
 # Clean everything including node_modules
 nuke: clean
 	@echo "Cleaning all dependencies..."
-	rm -rf node_modules
-	rm -f bun.lock package-lock.json
+	rm -vf bun.lock package-lock.json
+	rm -vf .*.bun-build
+	rm -rvf node_modules
 
 .PHONY: all install build run seed-run test clean nuke

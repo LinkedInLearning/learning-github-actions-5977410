@@ -1,0 +1,104 @@
+name: Create Artifacts
+
+on: [push, workflow_dispatch]
+
+jobs:
+  test:
+    name: Test Code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Test with different seeds
+        run: |
+          echo "Testing with no seed..."
+          bun run random-number-generator.js
+          echo ""
+
+          echo "Testing with string seed..."
+          bun run random-number-generator.js "test-seed"
+          echo ""
+
+          echo "Testing with numeric seed..."
+          bun run random-number-generator.js 1906
+          echo "Generated report:"
+          cat report.txt
+          echo ""
+          echo "✅ Code tests passed!"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: report.txt
+
+  build:
+    name: Build Executables
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build for all platforms
+        run: bun run build
+
+      - name: List executables
+        run: ls -la random-number-generator-*
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: random-number-generator-executables
+          path: ./random-number-generator-*
+
+  test-linux:
+    name: Test Linux Executable
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: random-number-generator-executables
+
+      - name: Make binary executable
+        run: chmod +x random-number-generator-linux
+
+      - name: Test Linux executable
+        run: |
+          echo "Testing with no seed..."
+          ./random-number-generator-linux
+          cat report.txt
+          echo ""
+
+          echo "Testing Linux executable with numeric seed..."
+          ./random-number-generator-linux 1906
+          echo "Generated report:"
+          cat report.txt
+          echo ""
+
+          echo "✅ Linux executable tests passed!"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-test-report
+          path: report.txt

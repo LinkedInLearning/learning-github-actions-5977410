@@ -61,5 +61,5 @@ This challenge will guide you through the following steps:
 
 <!-- FooterStart -->
 ---
-[← 02_05 Use Secrets](../02_05_secrets/README.md) | [02_07 Challenge: Develop a Workflow That Creates an Artifact →](../02_07_challenge_develop_a_workflow_that_creates_an_artifact/README.md)
+[← 02_05 Use Secrets](../02_05_secrets/README.md) | [02_07 Challenge: Develop a Workflow That Creates Artifacts →](../02_07_challenge_develop_a_workflow_that_creates_artifacts/README.md)
 <!-- FooterEnd -->
