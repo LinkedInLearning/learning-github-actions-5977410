@@ -376,8 +376,6 @@ jobs:
 
    ![Review the artifacts on the summary page][image7]
 
-   Alternate Text: Review the artifacts on the summary page
-
 [image1]: ./images/02_07_chlg_and_02_08_soln_1.png
 [image2]: ./images/02_07_chlg_and_02_08_soln_2.png
 [image3]: ./images/02_07_chlg_and_02_08_soln_3.png
