@@ -77,7 +77,7 @@ random-number-generator-*
 4. Use `runs-on` to configure the runner for each job.
 5. The `build` job should run after the `test` job. The `test-linux` job should run after the `build` job.
 
-```json
+```yaml
 name: Create Artifacts
 
 on: [push, workflow_dispatch]
@@ -113,7 +113,7 @@ jobs:
       1. `name: test-report`
       2. `path: report.txt`
 
-```json
+```yaml
  test:
     name: Test Code
     runs-on: ubuntu-latest
@@ -164,7 +164,7 @@ jobs:
       1. `name: random-number-generator-executables`
       2. `path: ./random-number-generator-*`
 
-```json
+```yaml
  build:
     name: Build Executables
     runs-on: ubuntu-latest
@@ -208,7 +208,7 @@ jobs:
       1. `name: linux-test-report`
       2. `path: report.txt`
 
-```json
+```yaml
  test-linux:
     name: Test Linux Executable
     runs-on: ubuntu-latest
@@ -246,7 +246,7 @@ jobs:
 
 Your complete workflow should be similar to the following:
 
-```json
+```yaml
 name: Create Artifacts
 
 on: [push, workflow_dispatch]
