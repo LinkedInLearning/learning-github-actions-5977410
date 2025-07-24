@@ -30,10 +30,6 @@ jobs:
 
           echo "Testing with numeric seed..."
           bun run random-number-generator.js 1906
-          echo "Generated report:"
-          cat report.txt
-          echo ""
-          echo "✅ Code tests passed!"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -86,16 +82,15 @@ jobs:
         run: |
           echo "Testing with no seed..."
           ./random-number-generator-linux
-          cat report.txt
+          echo ""
+
+          echo "Testing with string seed..."
+          ./random-number-generator-linux 1906 "test-seed"
           echo ""
 
           echo "Testing Linux executable with numeric seed..."
           ./random-number-generator-linux 1906
-          echo "Generated report:"
-          cat report.txt
           echo ""
-
-          echo "✅ Linux executable tests passed!"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
