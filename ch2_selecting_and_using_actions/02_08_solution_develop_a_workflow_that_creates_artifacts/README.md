@@ -246,6 +246,8 @@ jobs:
 
 Your complete workflow should be similar to the following:
 
+- [create-artifacts.yml](./create-artifacts.yml)
+
 ```yaml
 name: Create Artifacts
 
