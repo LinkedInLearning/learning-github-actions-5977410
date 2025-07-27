@@ -1,0 +1,77 @@
+name: Pipeline
+
+on: [push, workflow_dispatch]
+
+env:
+  APPLICATION_NAME: Mascot
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+
+      - name: Install requirements
+        run: pip install --requirement development-requirements.txt
+
+      - name: Lint code
+        run: |
+          flake8 --ignore=E501,E231 *.py
+          pylint --disable=C0301 *.py
+
+      - name: Run unit tests
+        run: python -m unittest --verbose --failfast
+
+  build:
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Set up the docker build environment
+      # https://github.com/marketplace/actions/docker-setup-buildx
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Log into ghcr.io
+      # https://github.com/marketplace/actions/docker-login
+      - name: Log into ghcr.io
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/marketplace/actions/docker-metadata-action
+      - name: Extract Docker metadata
+        # This step uses a step ID so other steps can refer to the ouptuts
+        # https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsid
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=sha,format=short,prefix=,suffix=
+            type=sha,format=long,prefix=,suffix=
+            type=ref,event=branch,prefix=,suffix=
+
+      # Build and push the container image
+      # https://github.com/marketplace/actions/build-and-push-docker-images
+      - name: Build and push the container image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64, linux/arm64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
