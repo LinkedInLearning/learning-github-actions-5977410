@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Python environment
         uses: actions/setup-python@v5
         with:
           python-version: 3.13
-      
+
       - name: Install requirements
         run: pip install --requirement development-requirements.txt
 
@@ -23,7 +23,7 @@ jobs:
         run: |
           flake8 --ignore=E501,E231 *.py
           pylint --disable=C0301 *.py
-      
+
       - name: Run unit tests
         run: python -m unittest --verbose --failfast
 
@@ -93,19 +93,22 @@ jobs:
 
       - name: Pull the image from GitHub Container Registry
         run: docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
-      
+
       - name: Start ${{ env.SERVICE_NAME }}
         run: |
           docker run \
             --rm --detach --publish 8080:8080 \
             --name $SERVICE_NAME ghcr.io/${{ github.repository }}:${{ github.sha }}
           sleep 3 # allow some time for the service to start
-      
-      - name: Run the test suite inside the container
+
+      - name: Run tests using the container image
         run: |
           docker exec $SERVICE_NAME \
-            python -m unittest --verbose --failfast 
-    
+            curl --silent --show-error --fail localhost:8080/health
+          docker exec $SERVICE_NAME \
+            curl --silent --show-error --fail localhost:8080/05024756-765e-41a9-89d7-1407436d9a58
+
+
       - name: Stop ${{ env.SERVICE_NAME }}
         run: docker stop $SERVICE_NAME
 
@@ -131,7 +134,7 @@ jobs:
       with:
         workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
         service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-    
+
     - name: Set up Google Cloud CLI
       uses: google-github-actions/setup-gcloud@v2
 
@@ -140,16 +143,16 @@ jobs:
 
     - name: Pull the image from GitHub Container Registry
       run: docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
-    
+
     - name: Tag the image for GCP Container Registry
       run: |
         docker tag ghcr.io/${{ github.repository }}:${{ github.sha }} \
           ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_REGISTRY_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
         docker image ls
-    
+
     - name: Push the tagged image to GCP Container Registry
       run: docker push ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_REGISTRY_NAME }}/$SERVICE_NAME:${{ github.sha }}
-    
+
     - name: Deploy to Cloud Run service
       uses: google-github-actions/deploy-cloudrun@v2
       with:

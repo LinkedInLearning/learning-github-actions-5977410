@@ -91,10 +91,13 @@ jobs:
             --name $SERVICE_NAME ghcr.io/${{ github.repository }}:${{ github.sha }}
           sleep 3 # allow some time for the service to start
 
-      - name: Run the test suite inside the container
+      - name: Run tests using the container image
         run: |
           docker exec $SERVICE_NAME \
-            python -m unittest --verbose --failfast
+            curl --silent --show-error --fail localhost:8080/health
+          docker exec $SERVICE_NAME \
+            curl --silent --show-error --fail localhost:8080/05024756-765e-41a9-89d7-1407436d9a58
+
 
       - name: Stop ${{ env.SERVICE_NAME }}
         run: docker stop $SERVICE_NAME
