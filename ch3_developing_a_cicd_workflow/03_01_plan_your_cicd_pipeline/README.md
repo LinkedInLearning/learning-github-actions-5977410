@@ -45,10 +45,11 @@ In this lesson, you’ll learn:
 ### Example Workflow Plan
 
 1. **Lint and test the code** to catch syntax errors and verify logic.
-2. **Build a container image** using a Dockerfile and the repository code.
-3. **Upload the image** to GitHub Package Registry to make it available for deployment.
-4. **Test the image** in a virtual environment to ensure it performs as expected.
-5. **Deploy the image** to a target environment once it’s verified and ready.
+1. **Build a container image** using a Dockerfile and the repository code and **upload the image** to GitHub Package Registry to make it available for deployment.
+1. **Test the image** in a virtual environment to ensure it performs as expected.
+1. **Deploy the image** to a target environment once it’s verified and ready.
+
+![A CI/CD Pipeline with four stages, kicked off by a push to the repo and resulting in a deployment to a target](./images/03_01_Plan_your_CI_CD_Pipeline.svg)
 
 <!-- FooterStart -->
 ---
