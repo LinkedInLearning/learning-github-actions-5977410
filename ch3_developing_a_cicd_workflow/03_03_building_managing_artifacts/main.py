@@ -12,6 +12,20 @@ with open('data.json', 'r', encoding="utf8") as data:
     MASCOTS = json.load(data)
 
 
+@API.route('/health', methods=['GET'])
+def health_check():
+    """
+    Function: health_check
+    Input: none
+    Returns: A simple health status response
+    """
+    return jsonify({
+        'status': 'healthy',
+        'service': 'mascot',
+        'mascots_loaded': len(MASCOTS)
+    })
+
+
 @API.route('/', methods=['GET'])
 def get_mascots():
     """
@@ -47,6 +61,5 @@ def not_found(error):
 
 
 if __name__ == '__main__':
-    import uvicorn
-    from asgiref.wsgi import WsgiToAsgi
-    uvicorn.run(WsgiToAsgi(API), host="0.0.0.0", port=10000)
+    from waitress import serve
+    serve(API, host="0.0.0.0", port=8080)

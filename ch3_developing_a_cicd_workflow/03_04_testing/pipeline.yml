@@ -65,3 +65,36 @@ jobs:
           push: true
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
+
+  test-image:
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: read
+
+    steps:
+      - name: Log into ghcr.io
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull the image from GitHub Container Registry
+        run: docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
+
+      - name: Start ${{ env.SERVICE_NAME }}
+        run: |
+          docker run \
+            --rm --detach --publish 8080:8080 \
+            --name $SERVICE_NAME ghcr.io/${{ github.repository }}:${{ github.sha }}
+          sleep 3 # allow some time for the service to start
+
+      - name: Run the test suite inside the container
+        run: |
+          docker exec $SERVICE_NAME \
+            python -m unittest --verbose --failfast
+
+      - name: Stop ${{ env.SERVICE_NAME }}
+        run: docker stop $SERVICE_NAME

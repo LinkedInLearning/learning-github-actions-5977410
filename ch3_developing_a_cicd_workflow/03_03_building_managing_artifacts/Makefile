@@ -10,7 +10,7 @@ help:
 	@echo "    lint         - run flake8 and pylint"
 	@echo "    unittest     - run unittests"
 	@echo "    build        - build docker container"
-	@echo "    run          - run containter on host port 10000"
+	@echo "    run          - run containter on host port 8080"
 	@echo "    logs 	    - show logs of the running container"
 	@echo "    stop		    - stop local container"
 	@echo "    clean        - stop local container, clean up workspace"
@@ -34,7 +34,7 @@ build: pip lint unittest
 	docker build -t $(SCOPE)/$(API):$(TAG) .
 
 run: build
-	docker run --rm -d -p 10000:10000 --name $(API) $(SCOPE)/$(API):$(TAG)
+	docker run --rm -d -p 8080:8080 --name $(API) $(SCOPE)/$(API):$(TAG)
 
 logs:
 	docker logs -f $(API) || true

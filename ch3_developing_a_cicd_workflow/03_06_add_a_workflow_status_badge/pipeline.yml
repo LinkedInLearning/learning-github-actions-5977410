@@ -1,0 +1,164 @@
+name: Pipeline
+
+on: [push, workflow_dispatch]
+
+env:
+  SERVICE_NAME: mascot-api
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.13
+      
+      - name: Install requirements
+        run: pip install --requirement development-requirements.txt
+
+      - name: Lint code
+        run: |
+          flake8 --ignore=E501,E231 *.py
+          pylint --disable=C0301 *.py
+      
+      - name: Run unit tests
+        run: python -m unittest --verbose --failfast
+
+  build:
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Set up the docker build environment
+      # https://github.com/marketplace/actions/docker-setup-buildx
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Log into ghcr.io
+      # https://github.com/marketplace/actions/docker-login
+      - name: Log into ghcr.io
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/marketplace/actions/docker-metadata-action
+      - name: Extract Docker metadata
+        # This step uses a step ID so other steps can refer to the ouptuts
+        # https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsid
+        id: metadata
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=sha,format=short,prefix=,suffix=
+            type=sha,format=long,prefix=,suffix=
+            type=ref,event=branch,prefix=,suffix=
+
+      # Build and push the container image
+      # https://github.com/marketplace/actions/build-and-push-docker-images
+      - name: Build and push the container image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64, linux/arm64
+          push: true
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
+
+  test-image:
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: read
+
+    steps:
+      - name: Log into ghcr.io
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Pull the image from GitHub Container Registry
+        run: docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
+      
+      - name: Start ${{ env.SERVICE_NAME }}
+        run: |
+          docker run \
+            --rm --detach --publish 8080:8080 \
+            --name $SERVICE_NAME ghcr.io/${{ github.repository }}:${{ github.sha }}
+          sleep 3 # allow some time for the service to start
+      
+      - name: Run the test suite inside the container
+        run: |
+          docker exec $SERVICE_NAME \
+            python -m unittest --verbose --failfast 
+    
+      - name: Stop ${{ env.SERVICE_NAME }}
+        run: docker stop $SERVICE_NAME
+
+  deploy:
+    needs: test-image
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: read
+      id-token: write
+
+    steps:
+    - name: Log into ghcr.io
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Authenticate to Google Cloud
+      id: auth
+      uses: google-github-actions/auth@v2
+      with:
+        workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+        service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+    
+    - name: Set up Google Cloud CLI
+      uses: google-github-actions/setup-gcloud@v2
+
+    - name: Configure Docker
+      run: gcloud auth configure-docker ${{ secrets.GCP_REGION }}-docker.pkg.dev
+
+    - name: Pull the image from GitHub Container Registry
+      run: docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
+    
+    - name: Tag the image for GCP Container Registry
+      run: |
+        docker tag ghcr.io/${{ github.repository }}:${{ github.sha }} \
+          ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_REGISTRY_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
+        docker image ls
+    
+    - name: Push the tagged image to GCP Container Registry
+      run: docker push ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ secrets.GCP_REGISTRY_NAME }}/$SERVICE_NAME:${{ github.sha }}
+    
+    - name: Deploy to Cloud Run service
+      uses: google-github-actions/deploy-cloudrun@v2
+      with:
+        service: ${{ env.SERVICE_NAME }}
+        region: ${{ secrets.GCP_REGION }}
+        image: ${{ secrets.GCP_REGION }}-docker.pkg.dev/${{secrets.GCP_PROJECT_ID}}/${{ secrets.GCP_REGISTRY_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
+        flags: '--allow-unauthenticated'
+
+    - name: Test the Live Application
+      run: |
+        DEPLOY_URL=$(gcloud run services describe $SERVICE_NAME --platform=managed --region=${{ secrets.GCP_REGION }} | grep https)
+        curl -sL --max-time 300 -o /dev/null -w "%{http_code}" $DEPLOY_URL | grep 200 || exit 1

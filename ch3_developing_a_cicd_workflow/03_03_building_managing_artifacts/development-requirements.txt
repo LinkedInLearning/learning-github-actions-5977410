@@ -1,4 +1,4 @@
 Flask
-pip
+waitress
 flake8
 pylint
