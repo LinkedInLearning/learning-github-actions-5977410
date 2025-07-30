@@ -60,14 +60,14 @@ This lesson walks you through:
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
             # Create a secret named AWS_REGION to store the region value
-            aws-region: us-east-1
+            aws-region: us-west-2
 
         - name: List S3 Buckets
             # Run a command to list all S3 buckets
             run: aws s3api list-buckets
     ```
 
-1. Replace the hard-coded region value `us-east-1` with the region secret:
+1. Replace the hard-coded region value `us-west-2` with the region secret:
 
     ```yaml
     aws-region: ${{ secrets.AWS_REGION }}
