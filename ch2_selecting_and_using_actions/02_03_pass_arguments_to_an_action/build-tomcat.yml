@@ -16,6 +16,7 @@ jobs:
           ls -ltr
           java -version
 
+    # https://github.com/marketplace/actions/checkout
     - name: Checkout the Tomcat repo
       uses: actions/checkout@v4.2.2
       with:
@@ -23,9 +24,11 @@ jobs:
         ref: main                 # The branch, tag or SHA to checkout
         path: ./tomcat            # Relative path under $GITHUB_WORKSPACE
 
+    # https://github.com/marketplace/actions/setup-java-jdk
     - name: Setup Java
       uses: actions/setup-java@v4.7.1
       with:
+        distribution: oracle # The distribution of Java to use
         java-version: 21   # The JDK version to make available on the path
         java-package: jdk  # (jre, jdk, or jdk+fx) - defaults to jdk
         architecture: x64  # (x64 or x86) - defaults to x64
