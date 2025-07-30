@@ -1,4 +1,4 @@
-API    = mascot
+API    = mascot-api
 SCOPE  = user99
 TAG    = $(shell echo "$$(date +%F)-$$(git rev-parse --short HEAD)")
 
@@ -23,6 +23,10 @@ requirements:
 development-requirements: requirements
 	pip install --upgrade --requirement development-requirements.txt
 
+fmt:
+	black --line-length 90 *.py
+	isort --profile black --line-length 90 *.py
+
 lint:
 	flake8 --ignore=E501,E231 *.py
 	pylint --errors-only --disable=C0301 *.py
@@ -44,7 +48,7 @@ stop:
 
 clean:
 	docker container stop $(API) || true
-	@rm -rf ./__pycache__ ./tests/__pycache__
-	@rm -f .*~ *.pyc
+	@rm -rvf ./__pycache__ ./tests/__pycache__ .DS_Store
+	@rm -vf .*~ *.pyc
 
 .PHONY: build clean deploy help interactive lint pip run test unittest upload

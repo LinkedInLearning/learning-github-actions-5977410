@@ -2,3 +2,5 @@ Flask
 waitress
 flake8
 pylint
+black
+isort
