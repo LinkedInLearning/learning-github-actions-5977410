@@ -64,5 +64,13 @@ jobs:
       with:
         name: windows
 
-    - name: Test ${{ env.FILE_NAME }}
-      run: ./${{ env.FILE_NAME }}.exe
+    - name: Test ${{ env.FILE_NAME }}.exe
+      run: |
+        Start-Process -FilePath ".\${{ env.FILE_NAME }}.exe" -NoNewWindow
+        Start-Sleep -Seconds 1
+        $names = @("Anakin", "Luke", "Leia", "Kylo", "Rey")
+        foreach ($name in $names) {
+          $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+          $response = Invoke-RestMethod -Uri "http://localhost:8080/$name" -Method Get
+          Write-Output "${timestamp}: $response"
+        }
