@@ -18,12 +18,14 @@ This challenge will guide you through the following steps:
 
 ## Instructions
 
+1. Create a new repository using the `Go` template for `.gitignore`.
+1. Open the repo in the GitHub Web Editor.
 1. Add the file [`web-server.go`](./web-server.go) to the root of your repository.
 
     The program defines a simple HTTP server that returns a random fun fact.
 
 1. Create the `.github/workflows` directory in the root of your GitHub repository.
-1. Copy [`use-artifacts.yml`](./use-artifacts.yml) into the `.github/workflows` directory.
+1. Add the file [`use-artifacts.yml`](./use-artifacts.yml) to the `.github/workflows` directory.
 1. Examine the workflow:
 
     - Triggered on every push.

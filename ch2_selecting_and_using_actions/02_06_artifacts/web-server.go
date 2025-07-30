@@ -38,7 +38,7 @@ func randomFact() string {
 }
 
 func startHttpServer(wg *sync.WaitGroup) *http.Server {
-	srv := &http.Server{Addr: ":11000"}
+	srv := &http.Server{Addr: ":8080"}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		// Log request details
@@ -83,7 +83,7 @@ func main() {
 
 	printBanner()
 	log.Printf("\033[1;32m[INFO]\033[0m main: starting HTTP server")
-	log.Printf("\033[1;32m[INFO]\033[0m main: access the server via http://localhost:11000")
+	log.Printf("\033[1;32m[INFO]\033[0m main: access the server via http://localhost:8080")
 
 	httpServerExitDone := &sync.WaitGroup{}
 

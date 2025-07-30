@@ -12,7 +12,7 @@ jobs:
     steps:
 
     - name: Check out code
-      uses: actions/checkout@v4.2.2
+      uses: actions/checkout@v4
 
     - name: Build ${{ env.FILE_NAME }} for linux
       run: go build ${{ env.FILE_NAME }}.go
@@ -21,13 +21,13 @@ jobs:
       run: GOOS=windows GOARCH=amd64 go build ${{ env.FILE_NAME }}.go
 
     - name: Upload artifact for linux
-      uses: actions/upload-artifact@v4.6.2
+      uses: actions/upload-artifact@v4
       with:
         name: linux
         path: ./${{ env.FILE_NAME }}
 
     - name: Upload artifact for windows
-      uses: actions/upload-artifact@v4.6.2
+      uses: actions/upload-artifact@v4
       with:
         name: windows
         path: ./${{ env.FILE_NAME }}.exe
@@ -39,7 +39,7 @@ jobs:
     steps:
 
     - name: Download artifact
-      uses: actions/download-artifact@v4.3.0
+      uses: actions/download-artifact@v4
       with:
         name: linux
 
@@ -50,7 +50,7 @@ jobs:
         sleep 1
         for i in Anakin Luke Leia Kylo Rey;
         do
-          echo "$(date): $(curl -s http://localhost:11000/${i})"
+          echo "$(date): $(curl -s http://localhost:8080/${i})"
         done
 
   test-windows:
@@ -60,7 +60,7 @@ jobs:
     steps:
 
     - name: Download artifact
-      uses: actions/download-artifact@v4.3.0
+      uses: actions/download-artifact@v4
       with:
         name: windows
 
