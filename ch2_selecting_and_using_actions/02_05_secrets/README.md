@@ -62,6 +62,10 @@ This lesson walks you through:
             # Create a secret named AWS_REGION to store the region value
             aws-region: us-west-2
 
+        - name: Get caller identity
+            # Run a command to get the details for the account in use
+            run: aws sts get-caller-identity
+
         - name: List S3 Buckets
             # Run a command to list all S3 buckets
             run: aws s3api list-buckets
