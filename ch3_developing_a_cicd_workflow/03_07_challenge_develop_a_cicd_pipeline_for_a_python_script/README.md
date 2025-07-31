@@ -14,16 +14,22 @@ You will complete the following steps in this challenge:
 2. **Use the repository in the GitHub Web Editor** to add code and workflows
 3. **Add the provided files**:
 
-   - `hello.py` (Python script)
-   - `Dockerfile` (for building the image)
-   - `.dockerignore` (for building the image)
-   - `python-pipeline.yml` (your CI/CD workflow)
+   - [`hello.py`](./hello.py) (Python script)
+   - [`Dockerfile`](./Dockerfile) (for building the image)
+   - [`.dockerignore`](./.dockerignore) (for building the image)
+   - [`python-pipeline.yml`](./python-pipeline.yml) (your CI/CD workflow)
 
 4. **Implement a three-stage pipeline**:
 
    - Lint and test the Python code
    - Build and push the container image to GHCR
    - Pull and run the image to verify output
+
+    ```mermaid
+    graph LR
+        A[Lint and test the Python code] --> B[Build and push the container image to GHCR]
+        B --> C[Pull and run the image to verify output]
+    ```
 
 5. **Push changes to the repository** and confirm the workflow runs successfully
 

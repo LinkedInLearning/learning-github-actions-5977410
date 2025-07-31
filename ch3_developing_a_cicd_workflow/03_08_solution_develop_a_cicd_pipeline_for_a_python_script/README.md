@@ -25,6 +25,12 @@ You will complete the following steps in this challenge:
    - Build and push the container image to GHCR
    - Pull and run the image to verify output
 
+    ```mermaid
+    graph LR
+        A[Lint and test the Python code] --> B[Build and push the container image to GHCR]
+        B --> C[Pull and run the image to verify output]
+    ```
+
 5. **Push changes to the repository** and confirm the workflow runs successfully
 
 This challenge should take about 15 minutes to complete.
