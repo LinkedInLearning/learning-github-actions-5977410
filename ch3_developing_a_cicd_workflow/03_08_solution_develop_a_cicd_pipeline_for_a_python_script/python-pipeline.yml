@@ -4,7 +4,7 @@ on: [push, workflow_dispatch]
 
 jobs:
   lint-and-test:
-    name: 🔬Lint and Test
+    name: Lint and Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -27,7 +27,7 @@ jobs:
         run: python hello.py | grep -i hello || exit 1
 
   build-and-push:
-    name: 📦 Build and Push Container
+    name: Build and Push Container
     needs: lint-and-test
     runs-on: ubuntu-latest
     permissions:
@@ -73,7 +73,7 @@ jobs:
 
 
   test-image:
-    name: 🔁 Pull and Test Container
+    name: Pull and Test Container
     needs: build-and-push
     runs-on: ubuntu-latest
     permissions:
