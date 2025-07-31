@@ -54,13 +54,13 @@ This challenge should take about 15 minutes to complete.
 
 - `hello.py`
 
-```py
+```python
 print("Hello, world!")
 ```
 
 - `Dockerfile`
 
-```json
+```Dockerfile
 FROM python:3.13-slim
 
 COPY hello.py .
@@ -70,7 +70,7 @@ CMD ["python", "hello.py"]
 
 - `.dockerignore`
 
-```json
+```shell
 .github
 .git
 .gitignore
@@ -79,7 +79,7 @@ README.md
 
 - `python-pipeline.yml`
 
-```json
+```yaml
 name: Python CI/CD Pipeline
 
 on: [push, workflow_dispatch]
