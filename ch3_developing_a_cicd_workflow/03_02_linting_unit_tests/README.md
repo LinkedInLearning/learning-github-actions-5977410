@@ -48,11 +48,13 @@ Follow along by completing these steps:
 2. Confirm that it lists the following dependencies:
 
    - Flask
-   - pip
+   - waitress
    - flake8
    - pylint
+   - black
+   - isort
 
-3. These packages are required for running the application and for the linting and testing steps in your workflow.
+3. These packages are required for developing the application and for the linting and testing steps in your workflow.
 
 ### Review the test suite
 

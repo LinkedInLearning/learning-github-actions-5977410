@@ -94,9 +94,9 @@ jobs:
       - name: Run tests using the container image
         run: |
           docker exec $SERVICE_NAME \
-            curl --silent --show-error --fail localhost:8080/health
+            curl --silent --fail localhost:8080/health
           docker exec $SERVICE_NAME \
-            curl --silent --show-error --fail localhost:8080/05024756-765e-41a9-89d7-1407436d9a58
+            curl --silent --fail localhost:8080/05024756-765e-41a9-89d7-1407436d9a58
 
 
       - name: Stop ${{ env.SERVICE_NAME }}
@@ -154,4 +154,6 @@ jobs:
     - name: Test the Live Application
       run: |
         DEPLOY_URL=$(gcloud run services describe $SERVICE_NAME --platform=managed --region=${{ secrets.GCP_REGION }} | grep https)
-        curl -sL --max-time 300 -o /dev/null -w "%{http_code}" $DEPLOY_URL | grep 200 || exit 1
+        echo "Testing DEPLOY_URL: ${DEPLOY_URL}"
+        curl --silent --fail ${DEPLOY_URL}/health
+        curl --silent --fail ${DEPLOY_URL}/05024756-765e-41a9-89d7-1407436d9a58
