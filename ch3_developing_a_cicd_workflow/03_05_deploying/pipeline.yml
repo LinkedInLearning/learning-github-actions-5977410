@@ -153,7 +153,7 @@ jobs:
 
     - name: Test the Live Application
       run: |
-        DEPLOY_URL=$(gcloud run services describe $SERVICE_NAME --platform=managed --region=${{ secrets.GCP_REGION }} | grep https)
+        DEPLOY_URL=$(gcloud run services describe $SERVICE_NAME --platform=managed --region=${{ secrets.GCP_REGION }} --format='value(status.url)')
         echo "Testing DEPLOY_URL: ${DEPLOY_URL}"
         curl --silent --fail ${DEPLOY_URL}/health
         curl --silent --fail ${DEPLOY_URL}/05024756-765e-41a9-89d7-1407436d9a58
