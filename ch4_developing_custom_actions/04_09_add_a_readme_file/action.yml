@@ -1,0 +1,20 @@
+name: test-scout
+description: >
+  A GitHub Action that scans Python projects for test files and reports coverage
+  based on a user-defined pattern.
+author: Your Name
+branding:
+  icon: search
+  color: blue
+runs:
+  using: docker
+  image: Dockerfile
+inputs:
+  pattern:
+    description: Pattern used to detect test files
+    required: false
+    default: test_*.py
+  strict_mode:
+    description: If set to "true", fails the workflow if no test files are found
+    required: false
+    default: "false"
