@@ -15,7 +15,7 @@ run:
 		$(IMAGE_NAME) $(PATTERN)
 
 # Run tests with the script
-script-test:
+test-script:
 	echo "\nTest 1: No Python files present"
 	rm -f test_*.py *.py
 	./entrypoint.sh $(PATTERN)
@@ -39,7 +39,7 @@ script-test:
 	echo "\n✅ Test suite complete!"
 
 # Run tests with the image
-image-test: build
+test-image: build
 	echo "\nTest 1: No Python files present"
 	rm -f test_*.py *.py
 	$(MAKE) --no-print-directory run

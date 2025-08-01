@@ -9,11 +9,6 @@ set -e
 # 3. If no test files are found, do something (warn or fail)
 # 4. Otherwise, exit gracefully
 
-# --- CONFIG ---
-DEFAULT_PATTERN="test_*.py"
-PATTERN="${1:-$DEFAULT_PATTERN}"
-STRICT_MODE="${STRICT_MODE:-false}"
-
 echo "🧭 test-scout is running..."
 
 # --- CONFIG ---
