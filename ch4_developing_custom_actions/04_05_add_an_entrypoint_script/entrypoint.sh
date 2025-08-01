@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+# Entrypoint for test-scout GitHub Action
+
 # Outline for test-scout action
 # 1. Count total Python files (*.py)
 # 2. Count test files based on pattern (default: test_*.py)
@@ -8,4 +10,6 @@ set -e
 # 4. Otherwise, exit gracefully
 
 echo "🧭 test-scout is running..."
-echo "✅ test-scout complete."
+
+echo
+exit 0
