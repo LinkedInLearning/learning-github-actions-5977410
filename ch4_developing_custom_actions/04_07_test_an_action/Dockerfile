@@ -6,8 +6,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     bash \
     curl \
-    jq \
-    which && \
+    jq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
