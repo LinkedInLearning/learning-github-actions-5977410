@@ -1,0 +1,5 @@
+name: "Print GitHub Actor and File Count"
+description: "A simple custom action that shows who triggered the workflow and how many files changed"
+runs:
+  using: "docker"
+  image: "Dockerfile"
