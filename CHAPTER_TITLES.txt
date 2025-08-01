@@ -35,11 +35,10 @@
 04_05 Add an Entry-Point Script
 04_06 Use Runtime Environment Resources
 04_07 Test an Action
-04_08 Complete the Entry-Point Script
-04_09 Add a Metadata File
-04_10 Add a README File
-04_11 Deploy a Custom Action
-04_12 Publish an Action to the Marketplace
-04_13 Challenge: Create a Custom Action
-04_14 Solution: Create a Custom Action
+04_08 Add a Metadata File
+04_09 Add a README File
+04_10 Deploy a Custom Action
+04_11 Publish an Action to the Marketplace
+04_12 Challenge: Create a Custom Action
+04_13 Solution: Create a Custom Action
 05_01 Additional Resources for GitHub Actions
