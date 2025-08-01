@@ -34,7 +34,7 @@
 04_04 Add a Dockerfile
 04_05 Add an Entry-Point Script
 04_06 Use Runtime Environment Resources
-04_07 Test an Action Locally
+04_07 Test an Action
 04_08 Complete the Entry-Point Script
 04_09 Add a Metadata File
 04_10 Add a README File

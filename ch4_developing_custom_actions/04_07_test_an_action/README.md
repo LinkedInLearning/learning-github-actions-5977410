@@ -1,4 +1,4 @@
-# 04_07 Test an Action Locally
+# 04_07 Test an Action
 
 <!-- FooterStart -->
 ---
