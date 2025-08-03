@@ -6,24 +6,18 @@ This action helps teams enforce or encourage test coverage by identifying when P
 
 It can be used passively to generate reports or actively to fail workflows using `strict_mode`.
 
----
-
-## 🔧 Inputs
+## Inputs
 
 | Name         | Description                                                                 | Required | Default       |
 |--------------|-----------------------------------------------------------------------------|----------|---------------|
 | `pattern`    | File glob pattern used to detect test files                                 | No       | `test_*.py`   |
 | `strict_mode`| If set to `true`, the action fails when no test files are found             | No       | `false`       |
 
----
-
-## 📤 Outputs
+## Outputs
 
 *This action does not currently set any outputs.*
 
----
-
-## 🧰 Example Usage
+## Example Usage
 
 ```yaml
 name: Python Project
@@ -38,7 +32,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Check for test files
-        uses: your-username/test-scout@v1
+        uses: YOUR_GITHUB_USER_NAME/test-scout@v1
         with:
           pattern: 'test_*.py'
           strict_mode: 'true'
