@@ -1,6 +1,6 @@
 # 02_01 Use an Action From the Marketplace
 
-TODO: The steps in the scripts are solid and can work for any Action from the marketplace.  Update the README when the target Action has been selected and (if needed) the code base has been updated.
+TODO: Add content
 
 <!-- FooterStart -->
 ---
