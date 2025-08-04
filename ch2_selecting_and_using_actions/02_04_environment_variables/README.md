@@ -26,7 +26,13 @@ In this lesson, you will:
 
 ### 2. Review Key Steps and Arguments
 
-TODO: ADD KEY STEPS HERE
+The file [environment-variables.yml](./environment-variables.yml) is configured with environment variables set at three levels:
+
+**Workflow level**: A global env block is declared near the top of the workflow file.
+
+**Job level**: Each job (Ubuntu and Windows) overrides some of the workflow-level variables.
+
+**Step level**: Individual steps override variables again, using either shell syntax or YAML interpolation.
 
 ### 3. Push the Changes, Trigger the Workflow, and Review the Logs
 
@@ -34,15 +40,22 @@ TODO: ADD KEY STEPS HERE
 1. Enter a commit message. For example, `add files to build tomcat`.
 1. Select the **Commit & Push** button.
 
-    Note: The exact button label might vary depending on your setup, but it will typically include "Commit".
+    _Note: The exact button label might vary depending on your setup, but it will typically include "Commit"._
 
 1. At the top of the left-hand navigation panel, select **Go to Repository**.
 1. In the repository view, select the **Actions** tab.
 1. You should see a workflow run listed with a label matching your commit message.
 1. Select that workflow run to open the details.
-1. Expand the logs for:
+1. Expand the logs for for each job.
 
-TODO: ADD DETAILS HERE
+    **Ubuntu Job**
+    - Observe how the default GitHub environment variables are echoed.
+    - Review how job-level variables are printed using Bash-style syntax.
+    - Review the final step, where step-level environment variables use YAML interpolation.
+
+    **Windows Job**
+    - Review the same sequence of steps used for the Ubuntu job.
+    - Note how variable syntax differs (e.g., PowerShell uses $Env:VARIABLE_NAME).
 
 You’ve now seen how to define and use environment variables in GitHub Actions. In the next lesson, you’ll learn about "secrets", a special kind of environment variable used for sensitive data.
 

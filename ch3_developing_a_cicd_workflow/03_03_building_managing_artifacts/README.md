@@ -40,7 +40,7 @@ Follow the links below for more information on the actions used in this pipeline
 ## Instructions
 
 > [!IMPORTANT]
-> Before proceeding with this lab, please complete the steps in the previous lesson: [Linting and Unit Tests](../03_02_linting_unit_tests/)
+> Before proceeding with this lab, please complete the steps in the previous lesson: [Linting and Unit Tests](../03_02_linting_unit_tests/README.md)
 
 1. Navigate to your repository on GitHub.
 1. Open the GitHub web editor (`github.dev`).

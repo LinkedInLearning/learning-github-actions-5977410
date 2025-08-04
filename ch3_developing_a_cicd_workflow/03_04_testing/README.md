@@ -23,6 +23,9 @@ In this lesson, you will:
 
 ## Instructions
 
+> [!IMPORTANT]
+> Before proceeding with this lab, please complete the steps in the previous lesson: [Building and Managing Artifacts](../03_03_building_managing_artifacts/README.md)
+
 First, review the current state of your workflow.
 
 Make sure your repository already contains:

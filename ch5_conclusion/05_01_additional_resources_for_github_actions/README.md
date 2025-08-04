@@ -1,6 +1,10 @@
 # 05_01 Additional Resources for GitHub Actions
 
-TODO: Add content
+Thanks for following this course on GitHub Actions!  I hope you’re already thinking about how to apply what you’ve learned to your own projects.
+
+Explore these additional resources to go further with GitHub Actions:
+
+- TODO: ADD LINKS TO ADDITIONAL RESOURCES
 
 <!-- FooterStart -->
 ---
