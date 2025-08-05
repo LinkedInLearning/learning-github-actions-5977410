@@ -181,7 +181,7 @@ This approach ensures the pipeline runs end-to-end without error, making it idea
 
   ![Warning in GitHub Web Editor for Secrets](./images/03_05_warnings_in_github_web_ide_for_secrets.png)
 
-- Be sure that the GCP service account used for the worfklow authentication has permission to deploy services and push images.  Review the TODO: ADD STEPS FOR CREATING GCP CREDENTIALS or use the ["Escape Hatch"](#escape-hatch) deploy job if you can't get your workflow steps to authenticate.
+- Be sure that the GCP service account used for the workflow authentication has permission to deploy services and push images.  Review the TODO: ADD STEPS FOR CREATING GCP CREDENTIALS or use the ["Escape Hatch"](#escape-hatch) deploy job if you can't get your workflow steps to authenticate.
 
 ## SHENANIGANS
 
