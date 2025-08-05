@@ -64,7 +64,6 @@ In the `pipeline.yml`, scroll to the `deploy` job section and review the followi
   * Deploys the image to a Cloud Run service.
   * Tests the live deployment with HTTP requests to validate the service is running correctly.
 
----
 
 ### Step 5: Run the Workflow
 
@@ -73,7 +72,6 @@ In the `pipeline.yml`, scroll to the `deploy` job section and review the followi
 3. Expand the `deploy` job and review each step as it completes.
 4. Confirm that the final step (testing the live app) completes successfully.
 
----
 
 ### Step 6: Troubleshooting Notes
 

@@ -8,14 +8,15 @@ It can be used passively to generate reports or actively to fail workflows using
 
 ## Inputs
 
-| Name         | Description                                                                 | Required | Default       |
-|--------------|-----------------------------------------------------------------------------|----------|---------------|
-| `pattern`    | File glob pattern used to detect test files                                 | No       | `test_*.py`   |
-| `strict_mode`| If set to `true`, the action fails when no test files are found             | No       | `false`       |
+| Name | Description | Required | Default |
+|------|-------------|----------|---------|
+| `pattern` | File glob pattern used to detect test files | No | `test_*.py` |
+| `strict_mode`| If set to `true`, the action fails when no test files are found | No | `false` |
 
 ## Outputs
 
-*This action does not currently set any outputs.*
+> [!IMPORTANT]
+> This action does not currently set any outputs.
 
 ## Example Usage
 

@@ -1,15 +1,21 @@
 # 04_04 Add a Dockerfile
 
-# 04_04 – Add a Dockerfile
+Now that we’ve defined the objective of our custom GitHub Action, it’s time to begin building it.
 
-Now that we’ve defined the objective of our custom GitHub Action, it’s time to begin building it. In this lesson, we’ll focus on adding the Dockerfile that defines the container environment for our action.
+In this lesson, we’ll focus on adding the Dockerfile that defines the container environment for our action.
 
-GitHub Codespaces provides everything we need to build and test our action without needing to install any tools locally.
+We'll use GitHub Codespaces, a web-based development environment that provides everything we need to build and test our action without installing any tools locally.
 
 ## References
 
-- <https://github.com/codespaces>
-- <https://docs.github.com/en/billing/concepts/product-billing/github-codespaces>
+- [GitHub Codespaces](https://github.com/features/codespaces)
+- [GitHub Codespaces billing](https://docs.github.com/en/billing/concepts/product-billing/github-codespaces)
+
+> [!TIP]
+> The following storage and core hours of Codespace usage are included, free of charge, for personal accounts:
+>
+> - Storage per month: 15 GB
+> - Core hours per month: 120 hrs
 
 ## Overview
 
@@ -21,35 +27,26 @@ In this lesson, you will:
 - Upload the provided `Dockerfile` to define the container image.
 - Review the Dockerfile to understand each instruction.
 
-
 ## Instructions
 
 ### Step 1: Open your GitHub repository in a Codespace
 
-1. Navigate to your public GitHub repository for the custom action.
+1. Create a public GitHub repository for the custom action.
 2. Select the `Code` dropdown and choose **Codespaces > Create codespace on main**.
 
-### Step 2: Create the workflows directory
+### Step 2: Create the `workflows` directory
 
 1. In the Codespace editor, open the file explorer.
 2. Right-click the root directory and choose **New Folder**.
-3. Name the folder: `.github`
-4. Right-click on the `.github` folder and create a subfolder named: `workflows`
+3. Name the folder: `.github/workflows`.
 
-### Step 3: Upload the workflow file
-
-1. In the file explorer, open `.github/workflows`.
-2. Select the “Upload Files” button (or drag and drop the file).
-3. Upload the file `custom-action-workflow.yml` (provided in the exercise files).
-4. Confirm the upload by committing the changes to the repository.
-
-### Step 4: Upload the Dockerfile
+### Step 3: Upload the Dockerfile
 
 1. At the root of your repository (outside of any folders), select “Upload Files.”
-2. Upload the provided `Dockerfile` (included in the lesson folder `04_04_add_a_dockerfile`).
+2. Upload the provided [`Dockerfile`](./Dockerfile).
 3. Commit the uploaded Dockerfile to your repository.
 
-### Step 5: Review the Dockerfile contents
+### Step 4: Review the Dockerfile contents
 
 Once the file is in place, open the `Dockerfile` in the editor and review the following sections:
 

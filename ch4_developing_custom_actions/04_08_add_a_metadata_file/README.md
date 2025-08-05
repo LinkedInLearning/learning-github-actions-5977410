@@ -4,30 +4,29 @@ GitHub Actions use metadata to define how an action runs, what inputs it expects
 
 In this lesson, you’ll add a file called `action.yml` to your repository to describe the behavior and configuration of the `test-scout` action.
 
-
 ## Overview
 
 In this lesson, you will:
 
-- Upload the provided metadata file (`action.yml`) to your repository.
+- Upload the provided metadata file to your repository.
 - Review the required and optional metadata fields supported by GitHub.
 - Understand how metadata links your action’s code to the GitHub workflow environment.
 
+## References
+
+- [Metadata syntax reference](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions)
 
 ## Instructions
 
-### Step 1: Open your repository in a GitHub Codespace
+> [!IMPORTANT]
+> Before proceeding with this lab, please complete the steps to create a Codespace as described in [Add a Dockerfile](../04_04_add_a_dockerfile/README.md).
 
-1. Open your public repository in GitHub.
-2. Launch a Codespace from the `Code > Codespaces` menu.
+### Step 1: Upload the metadata file
 
-### Step 2: Upload the metadata file
+1. At the root of your repository upload [`action.yml`](./action.yml).
+1. Commit the uploaded file to your repository.
 
-1. At the root of your repository, select “Upload Files.”
-2. Upload the provided file named `action.yml` from the folder `04_08_add_a_metadata_file`.
-3. Commit the uploaded file to your repository.
-
-### Step 3: Review the contents of `action.yml`
+### Step 2: Review the contents of `action.yml`
 
 Open the file in the editor and examine the key metadata fields:
 
@@ -41,12 +40,13 @@ Open the file in the editor and examine the key metadata fields:
 
 - **Optional fields**:
   - `inputs`: Allows customization by passing parameters (e.g., `pattern`, `strict_mode`)
-  - `outputs`: Currently unused, but may be added in the future
+  - `outputs`: Currently unused, but can be added in the future
   - `branding`: Sets the icon and color used if the action is published on the Marketplace
 
-> Branding uses icons from [Feather Icons](https://feathericons.com/) and a fixed set of color names supported by GitHub (e.g., `blue`, `green`, `purple`).
+> [!TIP]
+> Branding uses icons from [Feather Icons](https://feathericons.com/) and a fixed set of basic color names supported by GitHub (e.g., `blue`, `green`, `purple`).
 
-### Step 4: Consider how metadata connects the pieces
+### Step 3: Consider how metadata connects the pieces
 
 The `action.yml` file serves as the glue between:
 
@@ -56,12 +56,7 @@ The `action.yml` file serves as the glue between:
 
 It also helps the GitHub Marketplace display your action professionally if you choose to publish it.
 
-
 With the metadata file added, your action is now fully defined and ready for documentation in the next lesson.
-
-TODO REFERENCE:
-
-- <https://help.github.com/en/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions>
 
 <!-- FooterStart -->
 ---

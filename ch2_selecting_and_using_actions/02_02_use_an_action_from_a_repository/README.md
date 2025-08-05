@@ -4,7 +4,6 @@ GitHub Actions aren’t limited to the Marketplace. You can load actions directl
 
 This lesson explores the different ways to use actions that live outside the Marketplace, giving you more flexibility to customize your workflows.
 
----
 
 ## Overview
 
@@ -15,7 +14,6 @@ This lesson covers the following high-level concepts:
 * Referencing Docker container images as actions
 * Understanding the syntax and reference format required for each approach
 
----
 
 ## Notes
 
@@ -29,7 +27,6 @@ This lesson covers the following high-level concepts:
   - uses: ./scripts/code_checker
   ```
 
----
 
 ### Actions from a Public Repository
 
@@ -63,7 +60,6 @@ This lesson covers the following high-level concepts:
   uses: octocat/my-cool-action@main
 ```
 
----
 
 ### Actions from Docker Image Registries
 

@@ -4,13 +4,14 @@ In this lesson, we explore the essential components needed to develop a custom G
 
 ## Summary
 
-We’ll walk through the five core elements required for a custom action:
+We’ll walk through the core elements required for a custom action:
 
 - A clear objective
 - A dedicated public repository
 - A Dockerfile to define the container runtime
 - A script to hold the action logic
-- Metadata (`action.yml`) and a README for documentation
+- Metadata file
+- README file for documentation
 
 This foundational plan sets the stage for the upcoming hands-on lessons.
 
@@ -18,8 +19,6 @@ This foundational plan sets the stage for the upcoming hands-on lessons.
 
 - **Custom Actions** provide flexibility for specific project needs beyond pre-built Marketplace actions.
 - **Planning** ensures that your custom action is reusable, maintainable, and easy to share.
-
-TODO: REFERENCE: <https://guides.github.com/features/mastering-markdown/>
 
 <!-- FooterStart -->
 ---

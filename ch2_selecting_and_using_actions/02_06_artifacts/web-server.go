@@ -10,8 +10,11 @@ import (
 	"log"
 	"math/rand"
 	"net/http"
+	"os"
+	"os/signal"
 	"strings"
 	"sync"
+	"syscall"
 	"time"
 )
 
@@ -38,7 +41,12 @@ func randomFact() string {
 }
 
 func startHttpServer(wg *sync.WaitGroup) *http.Server {
-	srv := &http.Server{Addr: ":8080"}
+	srv := &http.Server{
+		Addr:         ":8080",
+		ReadTimeout:  15 * time.Second,
+		WriteTimeout: 15 * time.Second,
+		IdleTimeout:  60 * time.Second,
+	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		// Log request details
@@ -77,31 +85,58 @@ func startHttpServer(wg *sync.WaitGroup) *http.Server {
 	return srv
 }
 
+func gracefulShutdown(srv *http.Server) {
+	// Create a context with a reasonable timeout for shutdown
+	// 30 seconds should be enough for most applications
+	shutdownCtx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
+	log.Printf("\033[1;31m[INFO]\033[0m main: initiating graceful shutdown with 30s timeout")
+
+	// Attempt graceful shutdown
+	if err := srv.Shutdown(shutdownCtx); err != nil {
+		// Log the error instead of panicking in production
+		log.Printf("\033[1;31m[ERROR]\033[0m Server forced to shutdown due to timeout: %v", err)
+
+		// Optional: Force close if graceful shutdown fails
+		if closeErr := srv.Close(); closeErr != nil {
+			log.Printf("\033[1;31m[ERROR]\033[0m Error force-closing server: %v", closeErr)
+		}
+	} else {
+		log.Printf("\033[1;32m[INFO]\033[0m Server gracefully stopped")
+	}
+}
+
 func main() {
-	// add more time here to let the server run longer
-	sleepTime := 10 * time.Second
+	// Configuration for demo/CI purposes - set how long to run
+	sleepTime := 10 * time.Second // Change this for your CI needs (1-15 seconds)
+
+	// Set up signal handling for graceful shutdown
+	quit := make(chan os.Signal, 1)
+	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 
 	printBanner()
 	log.Printf("\033[1;32m[INFO]\033[0m main: starting HTTP server")
 	log.Printf("\033[1;32m[INFO]\033[0m main: access the server via http://localhost:8080")
+	log.Printf("\033[1;32m[INFO]\033[0m main: server will auto-stop after %v (or press Ctrl+C)", sleepTime)
 
 	httpServerExitDone := &sync.WaitGroup{}
 
 	httpServerExitDone.Add(1)
 	srv := startHttpServer(httpServerExitDone)
 
-	log.Printf("\033[1;34m[INFO]\033[0m main: serving for 10 seconds")
+	log.Printf("\033[1;34m[INFO]\033[0m main: serving for %v", sleepTime)
 
-	time.Sleep(sleepTime)
-
-	log.Printf("\033[1;31m[INFO]\033[0m main: stopping HTTP server")
-
-	// now close the server gracefully ("shutdown")
-	// timeout could be given with a proper context
-	// (in real world you shouldn't use TODO()).
-	if err := srv.Shutdown(context.TODO()); err != nil {
-		panic(err) // failure/timeout shutting down the server gracefully
+	// Wait for either timeout or interrupt signal
+	select {
+	case <-time.After(sleepTime):
+		log.Printf("\033[1;31m[INFO]\033[0m main: timeout reached, stopping HTTP server")
+	case <-quit:
+		log.Printf("\033[1;31m[INFO]\033[0m main: shutdown signal received, stopping HTTP server")
 	}
+
+	// Use the production-ready graceful shutdown
+	gracefulShutdown(srv)
 
 	// wait for goroutine started in startHttpServer() to stop
 	httpServerExitDone.Wait()
