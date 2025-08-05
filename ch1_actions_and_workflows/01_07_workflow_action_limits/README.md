@@ -1,5 +1,14 @@
 # 01_07 Workflow and Action Limits
 
+## References
+
+- [GitHub Actions Limits](https://docs.github.com/en/actions/reference/limits): Provides a comprehensive list of the limits applied to the GitHub Actions platform.
+
+## Summary
+
+> [!IMPORTANT]
+> These limits are subject to change.
+
 | **Category**  | **Limit**| **Details**|
 | ------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------- |
 | **Workflows** | Concurrent workflow runs      | Maximum of 20 workflows can run at the same time per repository. Additional workflows will queue.    |

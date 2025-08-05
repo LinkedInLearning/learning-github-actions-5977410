@@ -4,6 +4,12 @@ Before you begin building your own custom workflows and actions in GitHub Action
 
 This lesson summarizes the most common attributes used in a GitHub Actions workflow.
 
+## References
+
+- [Workflow Syntax](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax)
+- [Workflow Contexts](https://docs.github.com/en/actions/reference/workflows-and-actions/contexts)
+- [GitHub Actions Cheat Sheet](../../github-actions-cheat-sheet.pdf)
+
 ## Example Workflow
 
 Use the following workflow as an example for the attribute reference.
