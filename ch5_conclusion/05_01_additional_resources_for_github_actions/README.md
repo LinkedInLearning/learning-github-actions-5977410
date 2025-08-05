@@ -4,7 +4,8 @@ Thanks for following this course on GitHub Actions!  I hope you’re already thi
 
 Explore these additional resources to go further with GitHub Actions:
 
-- TODO: ADD LINKS TO ADDITIONAL RESOURCES
+- [Advanved GitHub Actions (3017420)](https://www.linkedin.com/learning/advanced-github-actions/next-level-github-actions)
+- [GitHub Actions for CI/CD (4375061)](https://www.linkedin.com/learning/github-actions-for-ci-cd/)
 
 <!-- FooterStart -->
 ---

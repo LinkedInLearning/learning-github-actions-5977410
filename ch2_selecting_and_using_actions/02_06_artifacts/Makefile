@@ -32,7 +32,7 @@ test: build
 	@SERVER_PID=$$!; \
 	sleep 2; \
 	echo "2. Testing root endpoint..."; \
-	curl -s http://localhost:$(PORT)/ > /dev/null && echo "✓ Root endpoint works" || echo "✗ Root endpoint failed"; \
+	curl -s http://localhost:$(PORT)/ > /dev/null && echo "✓ Root endpoint works" || 	echo "✗ Root endpoint failed"; \
 	echo "3. Testing named endpoint..."; \
 	curl -s http://localhost:$(PORT)/TestUser > /dev/null && echo "✓ Named endpoint works" || echo "✗ Named endpoint failed"; \
 	echo "4. Getting server response sample:"; \

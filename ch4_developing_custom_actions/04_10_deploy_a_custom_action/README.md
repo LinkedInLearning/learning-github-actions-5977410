@@ -38,7 +38,7 @@ Open `custom-action-workflow.yml` and examine the contents:
   - and runs your `test-scout` action using a reference to your own repo.
 
 > [!IMPORTANT]
-> ✏️ Replace `YOUR_USERNAME/YOUR_CUSTOM_ACTION_REPO_NAME` with your actual GitHub username and the repository name where the custom action is defined.
+> Replace `YOUR_USERNAME/YOUR_CUSTOM_ACTION_REPO_NAME` with your actual GitHub username and the repository name where the custom action is defined.
 
 ```yaml
 uses: YOUR_USERNAME/YOUR_CUSTOM_ACTION_REPO_NAME@main

@@ -4,21 +4,20 @@ Now that your CI/CD pipeline is fully functional, it's time to showcase it.
 
 In this lesson, you’ll learn how to add a GitHub Actions **status badge** to your repository’s README file. A badge provides a visual indicator of your workflow's current state—whether it's passing, failing, or in progress.
 
-TODO: ADD AN EXAMPLE STATUS BADGE HERE :D
-
-
 ## Overview
 
 You will:
 
-* Generate a status badge using GitHub’s built-in tools
-* Copy the badge's Markdown code
-* Paste the badge into your repository’s README file
-* Preview and commit the change
+- Generate a status badge using GitHub’s built-in tools
+- Copy the badge's Markdown code
+- Paste the badge into your repository’s README file
+- Preview and commit the change
 
 ## References
 
-* [Adding a workflow status badge](https://docs.github.com/en/actions/how-tos/monitor-workflows/add-a-status-badge)
+- [Adding a workflow status badge](https://docs.github.com/en/actions/how-tos/monitor-workflows/add-a-status-badge)
+  - [Status for branches](https://docs.github.com/en/actions/how-tos/monitor-workflows/add-a-status-badge#using-the-branch-parameter)
+  - [Status for events](https://docs.github.com/en/actions/how-tos/monitor-workflows/add-a-status-badge#using-the-branch-parameter)
 
 ## Instructions
 
@@ -28,43 +27,33 @@ You will:
 ### Step 1: Open the Workflow Page
 
 1. Go to your repository on GitHub.
-2. Select on the **Actions** tab.
-3. From the list of workflows on the left, select the one you want to track (e.g., `Pipeline`).
-
----
+1. Select on the **Actions** tab.
+1. From the list of workflows on the left, select the one you want to track (e.g., `Pipeline`).
 
 ### Step 4: Create a Status Badge
 
 1. In the top-right corner of the workflow’s page, select the **three-dot menu** next to the “Filter workflow runs” search box.
-2. From the dropdown menu, select **Create status badge**.
-3. Choose the branch and event you want the badge to reflect (default is `main`).
-4. Select the **Copy Markdown** button to copy the generated badge code.
-
+1. From the dropdown menu, select **Create status badge**.
+1. Choose the branch and event you want the badge to reflect (default is `main`).
+1. Select the **Copy Markdown** button to copy the generated badge code.
 
 ### Step 3: Add the Badge to the README File
 
 1. Return to the **Code** tab of your repository.
-2. Open the `README.md` file.
-3. Select the **pencil icon** to edit the file.
-4. At the top of the file (or wherever you prefer), paste the Markdown snippet you copied earlier.
-
+1. Open the `README.md` file.
+1. Select the **pencil icon** to edit the file.
+1. At the top of the file (or wherever you prefer), paste the Markdown snippet you copied earlier.
 
 ### Step 4: Preview and Commit
 
 1. Select the **Preview changes** tab to make sure the badge renders correctly.
-2. If everything looks good, commit the file and include a commit message (e.g., “Add workflow status badge”).
-3. Choose **Commit directly to the `main` branch** and select **Commit changes**.
-
+1. If everything looks good, commit the file and include a commit message (e.g., “Add workflow status badge”).
+1. Choose **Commit directly to the `main` branch** and select **Commit changes**.
 
 ### Step 5: Verify
 
-* Go back to the **repository home page** and confirm that the badge now appears in the README.
-* The badge should reflect the current status of your latest workflow run.
-
-
-Let me know when you're ready for the next lesson or if you’d like a quick refresher diagram to show how status badges integrate into repositories.
-
-TODO: Include details in the exercise files for “you can use query parameters to track other branches and even other events like pull requests and releases.”
+- Go back to the **repository home page** and confirm that the badge now appears in the README.
+- The badge should reflect the current status of your latest workflow run.
 
 <!-- FooterStart -->
 ---
