@@ -115,15 +115,20 @@ fi
 # Add IAM policy bindings
 info "Assigning IAM roles to Service Account..."
 
+gcloud iam service-accounts add-iam-policy-binding \
+  ${PROJECT_NUMBER}-compute@developer.gserviceaccount.com \
+  --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}" \
+  --role="roles/iam.serviceAccountUser"
+
 # Grant Artifact Registry Writer role to push images.
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}" \
-  --role="roles/artifactregistry.writer" --quiet
+  --role="roles/artifactregistry.writer"
 
 # Grant Cloud Run Admin role to deploy and manage Cloud Run services.
 gcloud projects add-iam-policy-binding "$PROJECT_ID" \
   --member="serviceAccount:${SERVICE_ACCOUNT_EMAIL}" \
-  --role="roles/run.admin"  --quiet
+  --role="roles/run.admin"
 
 # Grant the Service Account permission to be impersonated by GitHub Actions.
 # This binding allows identities from a specific GitHub repo to impersonate the SA.
