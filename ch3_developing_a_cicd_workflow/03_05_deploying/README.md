@@ -6,10 +6,15 @@ In this lesson, you’ll learn how to take the container image built and tested 
 
 You’ll configure your GitHub Actions workflow to authenticate with GCP, push the container image to the GCP Artifact Registry, and deploy it using Cloud Run.
 
+## References
+
+- [Learning Google Cloud Run](https://www.linkedin.com/learning/learning-google-cloud-run)
+
 ## Overview
 
 This lab walks you through:
 
+- Setting up the GCP environment
 - Preparing your secrets for GCP authentication
 - Reviewing the `deploy` job configuration in the existing workflow
 - Understanding how the workflow pushes the container to GCP
@@ -22,25 +27,31 @@ This lab walks you through:
 > Before proceeding with this lab, please complete the steps in the previous lesson: [Testing](../03_04_testing/README.md))
 
 > [!IMPORTANT]
-> If you are not planning to use a cloud service (ie, Google Cloud) in this lab, skip steps 1 and 2 below and fast forward to the ["Escape Hatch"](#escape-hatch) step.
+> If you are not planning to use a cloud service (ie, Google Cloud) in this lab, skip steps 1 and 2 below and fast forward to the ["Escape Hatch"](#escape-hatch) step. If you are planning to use AWS or Azure, take a look at the ["Shenanigans"](#shenanigans) section at the end of this document for future updates.  Then fast forward to the ["Escape Hatch"](#escape-hatch) in step 3.
 
-### Step 1: Add Google Cloud Secrets to the Repository
+### Step 1: Configure Your Google Cloud Platform (GCP) Environment
 
-TODO: ADD STEPS FOR CREATING GCP CREDENTIALS
+Use the steps in the following document to setup and configure your Google Cloud environment:
 
-1. In GitHub, go to your repository's **Settings** tab.
+- [Setup Google Cloud](./google_cloud/SETUP_GOOGLE_CLOUD.md)
+
+### Step 2: Add Google Cloud Secrets to the Repository {#add-google-cloud-secrets}
+
+After completing Step 1, log in to GitHub and navigate to your repository.
+
+1. Go to your repository's **Settings** tab.
 1. Navigate to **Secrets and variables > Actions > Repository secrets**.
-1. Add the following secrets:
+1. Select **New repository secret** and create a secrets for each of the values printed by the script in Step 1:
 
-| Secret Name                      | Description                                              |
-| -------------------------------- | -------------------------------------------------------- |
+| Secret Name | Description |
+| ----------- | ----------- |
+| `GCP_PROJECT_ID` | Your GCP project ID |
+| `GCP_REGION` | The region for Cloud Run (e.g., `us-central1`) |
+| `GCP_REGISTRY_NAME` | Your Artifact Registry name (e.g., `mascot-api`) |
+| `GCP_SERVICE_ACCOUNT` | The email of your GCP service account |
 | `GCP_WORKLOAD_IDENTITY_PROVIDER` | The workload identity provider string for your GCP setup |
-| `GCP_SERVICE_ACCOUNT`            | The email of your GCP service account                    |
-| `GCP_PROJECT_ID`                 | Your GCP project ID                                      |
-| `GCP_REGION`                     | The region for Cloud Run (e.g., `us-central1`)           |
-| `GCP_REGISTRY_NAME`              | Your Artifact Registry name (e.g., `mascot-registry`)    |
 
-### Step 2: Update the workflow file
+### Step 3: Update the workflow file
 
 Add the following job to the workflow file:
 
@@ -161,34 +172,36 @@ It skips the authentication and deployment steps but still demonstrates how depl
 
     - name: Test the Live Application
       run: |
-        echo "Check live application"
+        echo "Testing DEPLOY_URL: https://fake.run.app"
         echo "HTTP 200 OK - /health"
+        echo '{"mascots_loaded":10,"service":"mascot","status":"healthy"}'
         echo "HTTP 200 OK - /05024756-765e-41a9-89d7-1407436d9a58"
+        echo '{"guid":"05024756-765e-41a9-89d7-1407436d9a58","latlong":"42.026111,-93.648333","location":"Ames, IA, USA","mascot":"Cy","nickname":"Cyclones","school":"Iowa State University"}'
 ```
 
 This approach ensures the pipeline runs end-to-end without error, making it ideal for including a `deploy` job without connecting to a real cloud environment.
 
-### Step 3: Run the Workflow
+### Step 4: Run the Workflow
 
 1. Push your changes to GitHub.
 1. Go to the **Actions** tab and monitor the run titled **Pipeline**.
 1. Expand the `deploy` job and review each step as it completes.
 1. Confirm that the final step (testing the live app) completes successfully.
 
-### Step 4: Troubleshooting Notes
+### Step 5: Troubleshooting Notes
 
 - **Warnings in the GitHub web editor for secret variables**:  When viewing the `deploy` job in the GitHub web editor, warnings will appear under variables using the YAML syntax for secrets.  The message will read: "Context access might be invalid: ...".  This is caused by the editor not being able to determine the scope of the variable being referenced as a secret.  *These warnings can be safely ignored*.
 
   ![Warning in GitHub Web Editor for Secrets](./images/03_05_warnings_in_github_web_ide_for_secrets.png)
 
-- Be sure that the GCP service account used for the workflow authentication has permission to deploy services and push images.  Review the TODO: ADD STEPS FOR CREATING GCP CREDENTIALS or use the ["Escape Hatch"](#escape-hatch) deploy job if you can't get your workflow steps to authenticate.
+- Use the ["Escape Hatch"](#escape-hatch) deploy job if you can't get your workflow steps to authenticate with the cloud provider.
 
 ## SHENANIGANS
 
 Right now the lab is set up to work with GCP.  In the future, directions for the following may be added:
 
-- TODO: ADD STEPS FOR AUTHENTICATING WITH AWS AND DEPLOYING TO APP RUNNER
-- TODO: ADD STEPS FOR AUTHENTICATING WITH AZURE AND DEPLOYING TO AZURE CONTAINER SERVICES
+- Set up AWS and deploying to App Runner.
+- Set up Azure and deploying to Azure Container Services.
 
 <!-- FooterStart -->
 ---

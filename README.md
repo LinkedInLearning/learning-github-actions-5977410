@@ -8,46 +8,36 @@ This is the repository for the LinkedIn Learning course `Learning GitHub Actions
 
 _See the readme file in the main branch for updated instructions and information._
 
-## Instructions
+## Course Structure
 
-This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
+This repository is organized into directories that correspond to the videos and exercises in the course. Each chapter has its own directory, and within each chapter directory are subdirectories for each video or exercise.
 
-## Branches
+The course is organized into the following chapters:
 
-TODO: UPDATE THIS SECTION TO MATCH THE COURSE STRUCTURE
-
-The branches are structured to correspond to the videos in the course. The naming convention is `CHAPTER#_MOVIE#`. As an example, the branch named `02_03` corresponds to the second chapter and the third video in that chapter.
-Some branches will have a beginning and an end state. These are marked with the letters `b` for "beginning" and `e` for "end". The `b` branch contains the code as it is at the beginning of the movie. The `e` branch contains the code as it is at the end of the movie. The `main` branch holds the final state of the code when in the course.
-
-When switching from one exercise files branch to the next after making changes to the files, you may get a message like this:
-
-    error: Your local changes to the following files would be overwritten by checkout:        [files]
-    Please commit your changes or stash them before you switch branches.
-    Aborting
-
-To resolve this issue:
-
-    Add changes to git using this command: git add .
- Commit changes using this command: git commit -m "some message"
+| Chapter | Description |
+| --- | --- |
+| **0: Introduction** | Course overview, prerequisites, and foundational concepts for GitHub Actions |
+| **1: Actions and Workflows** | Create and configure workflows; add jobs and steps, manage dependencies; and understand workflow limits |
+| **2: Selecting and Using Actions** | Use actions from the marketplace and repositories; pass arguments; work with environment variables, secrets, and artifacts |
+| **3: Developing a CI/CD Workflow** | Plan and build a complete CI/CD pipeline including linting, testing, building, and deploying |
+| **4: Developing Custom Actions** | Create a custom action from scratch using a Docker container, metadata files, and publish the action to the GitHub marketplace |
+| **5: Conclusion** | Additional resources and next steps for continued learning with GitHub Actions |
 
 ## Installing
 
-TODO: UPDATE THIS SECTION TO MATCH THE COURSE STRUCTURE; NOTHING TO INSTALL! :D
+1. To use these exercise files, you must have the following accounts in place:
 
-1. To use these exercise files, you must have the following installed:
+    - **GitHub**, a web-based platform that uses Git for version control and collaboration on software development projects.
+    - **(OPTIONAL) Google Cloud Platform**, a cloud computing platform that provides a wide array of on-demand services.
 
-    - [list of requirements for course]
-
-1. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-1. [Course-specific instructions]
+1. Clone this repository to your local machine using your system's terminal or using a GUI tool like [SourceTree](https://www.sourcetreeapp.com/) or [GitHub Desktop](https://github.com/apps/desktop).
+1. See the README file in each directory for specific instructions related to the corresponding lesson.
 
 ## Instructor
 
-Instructor name
+Michael Jenkins, Lead Software Engineer
 
-Instructor description
-
-Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/).
+Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/michael-jenkins).
 
 [lil-course-url]: https://www.linkedin.com/learning/
 [lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4E0DAQG0eDHsyOSqTA/learning-public-crop_675_1200/B4EZVdqqdwHUAY-/0/1741033220778?e=2147483647&v=beta&t=FxUDo6FA8W8CiFROwqfZKL_mzQhYx9loYLfjN-LNjgA
