@@ -177,25 +177,27 @@ jobs:
 
 ### Review Workflow Results
 
-1. Go to the **Actions** tab to confirm the workflow starts
-2. Once completed, verify that all stages completed successfully.
-3. From the repository home page, confirm that the image was pushed to GHCR
+#### Review workflow results
 
-4. Go to your repository on GitHub and select the **Actions** tab.
+1. Go to the **Actions** tab to confirm the workflow starts.
+1. Verify that all stages completed successfully.
+1. Select the most recent run triggered by your push.
 
-   Alternate Text: View the Actions tab
+   ![View of the most recent workflow](./images/ch3_chlg_soln_00001.png)
 
-5. Select the most recent run triggered by your push.
+1. Review the logs for each job.
 
-   Alternate Text: View the most recent workflow
+   ![Review the logs for each job: Part 1](./images/ch3_chlg_soln_00002.png)
 
-6. Review the logs for each job.
+   ![Review the logs for each job: Part 2](./images/ch3_chlg_soln_00003.png)
 
-   Alternate Text: Review the logs for each job \- part 1
+   ![Review the logs for each job: Part 3](./images/ch3_chlg_soln_00004.png)
 
-   Alternate Text: Review the logs for each job \- part 2
+1. From the repository home page, confirm that the image was pushed to GHCR.
 
-   Alternate Text: Review the logs for each job \- part 3
+   ![Image details: Part 1](./images/ch3_chlg_soln_00005.png)
+
+   ![Image details: Part 2](./images/ch3_chlg_soln_00006.png)
 
 <!-- FooterStart -->
 ---
