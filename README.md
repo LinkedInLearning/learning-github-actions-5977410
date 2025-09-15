@@ -6,6 +6,8 @@ This is the repository for the LinkedIn Learning course `Learning GitHub Actions
 
 ## Course Description
 
+GitHub Actions is a continuous integration tool that allows developers to automate tasks for their software projects. In this course, learn how to use this powerful tool to create workflows triggered by events, implement continuous integration and continuous delivery (CI/CD) pipelines, and develop custom actions. Instructor Michael Jenkins shows you how to get started with actions and the workflows that run them. He also demonstrates how to use actions from the GitHub Marketplace and public repositories, leverage the capabilities of GitHub Actions to support your CI/CD workflow, and plan and develop custom actions.
+
 _See the readme file in the main branch for updated instructions and information._
 
 ## Course Structure
@@ -39,8 +41,8 @@ Michael Jenkins, Lead Software Engineer
 
 Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/michael-jenkins).
 
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4E0DAQG0eDHsyOSqTA/learning-public-crop_675_1200/B4EZVdqqdwHUAY-/0/1741033220778?e=2147483647&v=beta&t=FxUDo6FA8W8CiFROwqfZKL_mzQhYx9loYLfjN-LNjgA
+[lil-course-url]: https://www.linkedin.com/learning/learning-github-actions-event-driven-automation-for-your-codebase
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/v2/D4E0DAQGTv_1VRHyvqg/learning-public-crop_675_1200/B4EZk1xjpcIoAY-/0/1757543808319?e=2147483647&v=beta&t=Am-4hkmbAW7kSZnKJ1HyKD720eiJwg1M_o2rUP4moMo
 
 <!-- FooterStart -->
 ---
